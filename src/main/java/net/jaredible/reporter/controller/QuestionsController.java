@@ -1,6 +1,7 @@
 package net.jaredible.reporter.controller;
 
 import java.util.List;
+import java.util.Properties;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,7 +30,20 @@ public class QuestionsController {
 
 	@PostMapping
 	public String uploadDataFile() {
+		questionService.processProperties(getTest());
 		return "success";
+	}
+
+	private Properties getTest() {
+		Properties props = new Properties();
+
+		props.setProperty("new", "What is 2+2?");
+		props.setProperty("assign:2", "Is 3+3=6?");
+		props.setProperty("test:1", "Is |-1|=1?");
+		props.setProperty("assign:2.DB", "2");
+		props.setProperty("test:2.DB", "3");
+
+		return props;
 	}
 
 }
