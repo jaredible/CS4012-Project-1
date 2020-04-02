@@ -1,13 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Home</title>
-	</head>
-	<body>
-		Message: ${message}
-	</body>
-</html>
+<div class="ui text menu">
+	<div class="item">
+		<img src="<c:url value="/resources/img/new-school.jpg" />">
+	</div>
+</div>
