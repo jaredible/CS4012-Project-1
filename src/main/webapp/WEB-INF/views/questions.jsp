@@ -10,21 +10,27 @@
 		<%@ include file="partials/header.jsp" %>
 		
 		<div class="ui container">
-			<form action="" method="POST" enctype="multipart/form-data">
-				<input type="file" name="file" />
-				<input type="submit" value="Upload file" />
+			<form class="ui form" action="" method="POST" enctype="multipart/form-data">
+				<input type="file" name="files" multiple>
+				<input type="submit" value="Upload file">
 			</form>
-		</div>
-		
-		<div class="ui container">
-			<div class="ui raised segments">
-				<c:forEach var="question" items="${questions}">
-					<div class="ui segment">
-						<h3 class="ui header"><c:out value="${question.id}" /></h3>
-						<span><c:out value="${question.content}" /></span>
-					</div>
-				</c:forEach>
-			</div>
+			
+			<table class="ui celled padded table">
+				<thead>
+					<tr>
+						<th class="single line">ID</th>
+						<th>Content</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="question" items="${questions}">
+						<tr>
+							<td class="single line"><c:out value="${question.id}" /></td>
+							<td><c:out value="${question.content}" /></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
 		</div>
 		
 		<%@ include file="partials/footer.jsp" %>

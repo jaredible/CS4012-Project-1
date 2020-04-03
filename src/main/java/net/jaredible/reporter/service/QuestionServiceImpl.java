@@ -1,5 +1,6 @@
 package net.jaredible.reporter.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -24,7 +25,29 @@ public class QuestionServiceImpl implements QuestionService {
 	}
 
 	@Override
-	public void processProperties(Properties props) {
+	public List<String> test(String contextPath, Properties[] props) {
+		List<String> result = new ArrayList<String>();
+
+		if (props != null) {
+		}
+
+		return result;
+	}
+
+	private String processDataFile(Properties props) {
+		StringBuilder result = new StringBuilder();
+
+		result.append("testing"); // test
+
+//		try {
+//			PDDocument doc = PDFUtil.generateDocument("");
+//			doc.save("");
+//			doc.close();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+
+		return result.toString();
 	}
 
 }

@@ -1,7 +1,15 @@
 package net.jaredible.reporter.controller;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+
+import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +29,9 @@ import net.jaredible.reporter.service.QuestionService;
 public class QuestionsController {
 
 	@Autowired
+	private ServletContext context;
+
+	@Autowired
 	private QuestionService questionService;
 
 	@GetMapping
@@ -32,22 +43,54 @@ public class QuestionsController {
 	}
 
 	@PostMapping
-	public String uploadDataFile(Model model, @RequestParam("file") MultipartFile file) {
-		questionService.processProperties(getTest());
-		model.addAttribute("message", "Upload successful!");
+	public String uploadDataFile(Model model, @RequestParam("files") MultipartFile[] files) {
+		test(files);
+
+		Properties[] props = read(files);
+		List<String> urls = questionService.test(context.getContextPath(), props);
+		model.addAttribute("urls", urls);
 		return "success";
 	}
 
-	private Properties getTest() {
-		Properties props = new Properties();
+	private Properties[] read(MultipartFile[] files) {
+		List<Properties> props = new ArrayList<Properties>();
 
-		props.setProperty("new", "What is 2+2?");
-		props.setProperty("assign:2", "Is 3+3=6?");
-		props.setProperty("test:1", "Is |-1|=1?");
-		props.setProperty("assign:2.DB", "2");
-		props.setProperty("test:2.DB", "3");
+		for (MultipartFile file : files) {
+			try (InputStream input = file.getInputStream()) {
+				Properties prop = new Properties();
+				prop.load(input);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 
-		return props;
+		return null;
+	}
+
+	private void test(MultipartFile[] files) {
+		try {
+			String path = context.getRealPath("/WEB-INF");
+			System.out.println(path);
+			File file = new File(path, "files");
+			System.out.println(file.exists());
+			if (!file.exists()) {
+				file.mkdir();
+			}
+			file = new File(file, "abc.txt");
+			if (!file.exists()) {
+				file.createNewFile();
+			}
+			FileWriter fw = new FileWriter(file.getAbsoluteFile());
+			BufferedWriter bw = new BufferedWriter(fw);
+			bw.write("test1");
+			bw.newLine();
+			bw.write("test2");
+			bw.newLine();
+			bw.write("test3");
+			bw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -3,6 +3,6 @@
 
 <div class="ui text menu">
 	<div class="item">
-		<img src="<c:url value="/resources/img/new-school.jpg" />">
+		<img src="<c:url value="/resources/img/logo.jpg" />">
 	</div>
 </div>
