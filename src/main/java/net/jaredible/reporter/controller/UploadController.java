@@ -3,6 +3,8 @@ package net.jaredible.reporter.controller;
 import java.util.List;
 import java.util.Properties;
 
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +25,9 @@ import net.jaredible.reporter.util.PropertiesUtils;
 public class UploadController {
 
 	@Autowired
+	private ServletContext context;
+
+	@Autowired
 	private AssignmentService assignmentService;
 
 	@Autowired
@@ -39,7 +44,7 @@ public class UploadController {
 	@PostMapping
 	public String generateAssignments(Model model, @RequestParam("files") MultipartFile[] files) {
 		Properties[] props = PropertiesUtils.convert(files);
-		List<String> links = assignmentService.process(props);
+		List<String> links = assignmentService.process(props, context.getRealPath("/assignments"));
 		model.addAttribute("links", links);
 		return "success";
 	}

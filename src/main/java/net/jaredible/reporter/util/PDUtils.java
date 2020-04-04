@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -13,14 +14,26 @@ import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 import net.jaredible.reporter.model.Assignment;
+import net.jaredible.reporter.model.AssignmentType;
+import net.jaredible.reporter.model.Question;
 
 public class PDUtils {
 
-	public static String generate(Assignment assignment) {
-		return assignment.getTitle();
+	public static String generate(String path, AssignmentType type, Assignment assignment, Map<Integer, Question> questions) {
+		String result = null;
+
+		try {
+			result = test(new File(path, type.getFolder()).getPath());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return result;
 	}
 
-	public static void test(String folder) throws IOException {
+	public static String test(String path) throws IOException {
+		String result = null;
+
 		PDDocument doc = null;
 		try {
 			doc = new PDDocument();
@@ -75,12 +88,16 @@ public class PDUtils {
 			contentStream.endText();
 			contentStream.close();
 
-			doc.save(new File(folder, "break-long-string.pdf"));
+			File f = new File(path, "test.pdf");
+			doc.save(f);
+			result = f.getPath();
 		} finally {
 			if (doc != null) {
 				doc.close();
 			}
 		}
+
+		return result;
 	}
 
 }

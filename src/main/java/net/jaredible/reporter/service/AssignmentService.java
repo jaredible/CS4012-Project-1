@@ -15,8 +15,8 @@ public interface AssignmentService {
 
 	public void deleteAssignment(int id);
 
-	public String process(Properties properties);
+	public String process(Properties properties, String path);
 
-	public List<String> process(Properties[] properties);
+	public List<String> process(Properties[] properties, String path);
 
 }
