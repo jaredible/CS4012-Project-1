@@ -2,7 +2,7 @@ package net.jaredible.reporter.dao;
 
 import java.util.List;
 
-import net.jaredible.reporter.entity.Question;
+import net.jaredible.reporter.model.Question;
 
 public interface QuestionDAO {
 

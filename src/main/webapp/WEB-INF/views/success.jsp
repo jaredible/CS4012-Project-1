@@ -8,6 +8,8 @@
 		<title>Home</title>
 	</head>
 	<body>
-		Message: ${message}
+		<c:forEach var="link" items="${links}">
+			<h5>${link}</h5>
+		</c:forEach>
 	</body>
 </html>

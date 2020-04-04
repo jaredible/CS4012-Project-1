@@ -12,47 +12,44 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import net.jaredible.reporter.model.Question;
+import net.jaredible.reporter.model.Assignment;
 
 @Repository
-public class QuestionDAOImpl implements QuestionDAO {
+public class AssignmentDAOImpl implements AssignmentDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<Question> getQuestions() {
+	public List<Assignment> getAssignments() {
 		Session session = sessionFactory.getCurrentSession();
 		CriteriaBuilder cb = session.getCriteriaBuilder();
-		CriteriaQuery<Question> cq = cb.createQuery(Question.class);
-		Root<Question> root = cq.from(Question.class);
+		CriteriaQuery<Assignment> cq = cb.createQuery(Assignment.class);
+		Root<Assignment> root = cq.from(Assignment.class);
 		cq.select(root);
 		Query query = session.createQuery(cq);
 		return query.getResultList();
 	}
 
 	@Override
-	public Question getQuestion(int id) {
+	public Assignment getAssignment(int id) {
 		Session session = sessionFactory.getCurrentSession();
-		Question question = session.get(Question.class, id);
-		return question;
+		Assignment assignment = session.get(Assignment.class, id);
+		return assignment;
 	}
 
 	@Override
-	public void saveQuestion(Question question) {
+	public void saveAssignment(Assignment assignment) {
 		Session session = sessionFactory.getCurrentSession();
-		session.saveOrUpdate(question);
+		session.saveOrUpdate(assignment);
 	}
 
 	@Override
-	public void deleteQuestion(int id) {
+	public void deleteAssignment(int id) {
 		Session session = sessionFactory.getCurrentSession();
-		Question question = session.byId(Question.class).load(id);
-		session.delete(question);
+		Assignment assignment = session.byId(Assignment.class).load(id);
+		session.delete(assignment);
 	}
 
 }
-
-// org.hibernate.HibernateException: Could not obtain transaction-synchronized Session for current thread
-// https://stackoverflow.com/questions/26203446/spring-hibernate-could-not-obtain-transaction-synchronized-session-for-current

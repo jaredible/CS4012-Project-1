@@ -11,8 +11,8 @@
 		
 		<div class="ui container">
 			<form class="ui form" action="" method="POST" enctype="multipart/form-data">
-				<input type="file" name="files" multiple>
-				<input type="submit" value="Upload file">
+				<input type="file" name="file">
+				<input type="submit" value="Upload">
 			</form>
 			
 			<table class="ui celled padded table">

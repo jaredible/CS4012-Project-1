@@ -1,1 +1,1 @@
-<% response.sendRedirect("questions"); %>
+<% response.sendRedirect("upload"); %>
