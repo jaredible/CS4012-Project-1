@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import javax.servlet.ServletContext;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,9 @@ import net.jaredible.reporter.entity.Question;
 public class QuestionServiceImpl implements QuestionService {
 
 	@Autowired
+	private ServletContext context;
+
+	@Autowired
 	private QuestionDAO questionDAO;
 
 	@Override
@@ -25,7 +29,7 @@ public class QuestionServiceImpl implements QuestionService {
 	}
 
 	@Override
-	public List<String> test(String contextPath, Properties[] props) {
+	public List<String> process(Properties[] props) {
 		List<String> result = new ArrayList<String>();
 
 		if (props != null) {

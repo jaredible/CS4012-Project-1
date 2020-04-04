@@ -23,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import net.jaredible.reporter.entity.Question;
 import net.jaredible.reporter.service.QuestionService;
+import net.jaredible.reporter.util.PropertiesUtils;
 
 @Controller
 @RequestMapping("/questions")
@@ -46,8 +47,7 @@ public class QuestionsController {
 	public String uploadDataFile(Model model, @RequestParam("files") MultipartFile[] files) {
 		test(files);
 
-		Properties[] props = read(files);
-		List<String> urls = questionService.test(context.getContextPath(), props);
+		List<String> urls = questionService.process(PropertiesUtils.convert(files));
 		model.addAttribute("urls", urls);
 		return "success";
 	}
@@ -96,3 +96,5 @@ public class QuestionsController {
 }
 
 // https://www.tutorialspoint.com/spring/spring_mvc_form_handling_example.htm
+// spring mvc separation of concerns
+// https://www.petrikainulainen.net/software-development/design/understanding-spring-web-application-architecture-the-classic-way/

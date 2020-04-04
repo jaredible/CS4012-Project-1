@@ -9,6 +9,6 @@ public interface QuestionService {
 
 	public List<Question> getQuestions();
 
-	public List<String> test(String contextPath, Properties[] props);
+	public List<String> process(Properties[] props);
 
 }

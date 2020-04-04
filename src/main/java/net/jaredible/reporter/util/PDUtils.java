@@ -1,17 +1,16 @@
 package net.jaredible.reporter.util;
 
+import java.util.List;
+
 import org.apache.pdfbox.pdmodel.PDDocument;
+
+import net.jaredible.reporter.entity.Question;
 
 public class PDUtils {
 
-	public static PDDocument generateDocument(String content) {
+	public static String generateDocument(List<Question> questions) {
 		PDDocument doc = new PDDocument();
 		return null;
-	}
-	
-	public static boolean saveDocument(PDDocument document) {
-		//document.save("");
-		return false;
 	}
 
 }
