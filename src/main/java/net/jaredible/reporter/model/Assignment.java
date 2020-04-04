@@ -1,5 +1,6 @@
 package net.jaredible.reporter.model;
 
+import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -29,6 +30,9 @@ public class Assignment {
 	@Column(name = "author")
 	private String author;
 
+	@Column(name = "due_date")
+	private Timestamp dueDate;
+
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "assignment_question", joinColumns = @JoinColumn(name = "question_id"), inverseJoinColumns = @JoinColumn(name = "assignment_id"))
 	private Set<Question> questions = new HashSet<Question>();
@@ -36,16 +40,18 @@ public class Assignment {
 	public Assignment() {
 	}
 
-	public Assignment(Integer id, String title, String author) {
+	public Assignment(Integer id, String title, String author, Timestamp dueDate) {
 		this.id = id;
 		this.title = title;
 		this.author = author;
+		this.dueDate = dueDate;
 	}
 
-	public Assignment(Integer id, String title, String author, Set<Question> questions) {
+	public Assignment(Integer id, String title, String author, Timestamp dueDate, Set<Question> questions) {
 		this.id = id;
 		this.title = title;
 		this.author = author;
+		this.dueDate = dueDate;
 		this.questions = questions;
 	}
 
@@ -71,6 +77,14 @@ public class Assignment {
 
 	public void setAuthor(String author) {
 		this.author = author;
+	}
+
+	public Timestamp getDueDate() {
+		return dueDate;
+	}
+
+	public void setDueDate(Timestamp dueDate) {
+		this.dueDate = dueDate;
 	}
 
 	public Set<Question> getQuestions() {

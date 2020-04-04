@@ -1,5 +1,6 @@
 package net.jaredible.reporter.service;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -7,46 +8,40 @@ import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.Set;
 
-import javax.transaction.Transactional;
-
 import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import net.jaredible.reporter.dao.AssignmentDAO;
-import net.jaredible.reporter.dao.QuestionDAO;
 import net.jaredible.reporter.model.Assignment;
 import net.jaredible.reporter.model.Question;
 import net.jaredible.reporter.util.PDUtils;
-import net.jaredible.reporter.util.PropertiesUtils;
 
+@Service
 public class AssignmentServiceImpl implements AssignmentService {
 
 	@Autowired
 	private AssignmentDAO assignmentDAO;
 
 	@Autowired
-	private QuestionDAO questionDao;
+	private QuestionService questionService;
 
 	@Override
-	@Transactional
 	public List<Assignment> getAssignments() {
 		return assignmentDAO.getAssignments();
 	}
 
 	@Override
-	@Transactional
 	public Assignment getAssignment(int id) {
 		return assignmentDAO.getAssignment(id);
 	}
 
 	@Override
-	@Transactional
 	public void saveAssignment(Assignment assignment) {
 		assignmentDAO.saveAssignment(assignment);
 	}
 
 	@Override
-	@Transactional
 	public void deleteAssignment(int id) {
 		assignmentDAO.deleteAssignment(id);
 	}
@@ -55,6 +50,7 @@ public class AssignmentServiceImpl implements AssignmentService {
 	public String process(Properties properties) {
 		String title = properties.getProperty("title");
 		String author = properties.getProperty("author");
+		String dueDate = properties.getProperty("due");
 		Set<Question> questions = new HashSet<Question>();
 
 		for (Entry<Object, Object> prop : properties.entrySet()) {
@@ -64,16 +60,17 @@ public class AssignmentServiceImpl implements AssignmentService {
 			if (NumberUtils.isCreatable(key)) {
 				if (NumberUtils.isCreatable(value)) {
 					Integer questionId = Integer.parseInt(value);
-					Question question = questionDao.getQuestion(questionId);
+					Question question = questionService.getQuestion(questionId);
 					questions.add(question);
-					// references question from DB
 				} else {
-					// new question, so save it
+					Question question = new Question(null, value);
+					questionService.saveQuestion(question);
+					questions.add(question);
 				}
 			}
 		}
 
-		Assignment assignment = new Assignment(null, title, author);
+		Assignment assignment = new Assignment(null, title, author, Timestamp.valueOf(dueDate), questions);
 		assignmentDAO.saveAssignment(assignment);
 
 		String link = PDUtils.generate(assignment);

@@ -6,6 +6,7 @@ import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import javax.transaction.Transactional;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -21,6 +22,7 @@ public class QuestionDAOImpl implements QuestionDAO {
 	private SessionFactory sessionFactory;
 
 	@Override
+	@Transactional
 	@SuppressWarnings("unchecked")
 	public List<Question> getQuestions() {
 		Session session = sessionFactory.getCurrentSession();
@@ -33,6 +35,7 @@ public class QuestionDAOImpl implements QuestionDAO {
 	}
 
 	@Override
+	@Transactional
 	public Question getQuestion(int id) {
 		Session session = sessionFactory.getCurrentSession();
 		Question question = session.get(Question.class, id);
@@ -40,12 +43,14 @@ public class QuestionDAOImpl implements QuestionDAO {
 	}
 
 	@Override
+	@Transactional
 	public void saveQuestion(Question question) {
 		Session session = sessionFactory.getCurrentSession();
 		session.saveOrUpdate(question);
 	}
 
 	@Override
+	@Transactional
 	public void deleteQuestion(int id) {
 		Session session = sessionFactory.getCurrentSession();
 		Question question = session.byId(Question.class).load(id);

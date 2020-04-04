@@ -17,8 +17,7 @@ import net.jaredible.reporter.model.Assignment;
 public class PDUtils {
 
 	public static String generate(Assignment assignment) {
-		// PDDocument doc = new PDDocument();
-		return "test";
+		return assignment.getTitle();
 	}
 
 	public static void test(String folder) throws IOException {

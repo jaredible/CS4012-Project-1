@@ -6,6 +6,7 @@ import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import javax.transaction.Transactional;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -21,6 +22,7 @@ public class AssignmentDAOImpl implements AssignmentDAO {
 	private SessionFactory sessionFactory;
 
 	@Override
+	@Transactional
 	@SuppressWarnings("unchecked")
 	public List<Assignment> getAssignments() {
 		Session session = sessionFactory.getCurrentSession();
@@ -33,6 +35,7 @@ public class AssignmentDAOImpl implements AssignmentDAO {
 	}
 
 	@Override
+	@Transactional
 	public Assignment getAssignment(int id) {
 		Session session = sessionFactory.getCurrentSession();
 		Assignment assignment = session.get(Assignment.class, id);
@@ -40,12 +43,14 @@ public class AssignmentDAOImpl implements AssignmentDAO {
 	}
 
 	@Override
+	@Transactional
 	public void saveAssignment(Assignment assignment) {
 		Session session = sessionFactory.getCurrentSession();
 		session.saveOrUpdate(assignment);
 	}
 
 	@Override
+	@Transactional
 	public void deleteAssignment(int id) {
 		Session session = sessionFactory.getCurrentSession();
 		Assignment assignment = session.byId(Assignment.class).load(id);
