@@ -4,12 +4,25 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8">
-		<title>Home</title>
+		<%@ include file="partials/head.jsp" %>
 	</head>
 	<body>
+		<%@ include file="partials/header.jsp" %>
+		
+		<div class="ui center aligned basic segment">
+			<h1 class="ui header">
+				<a href="<c:url value="/" />">Home</a>
+			</h1>
+		</div>
+		
 		<c:forEach var="link" items="${links}">
-			<h5>${link}</h5>
+			<div class="ui center aligned basic segment">
+				<a href="<c:url value="${link}" />">${link}</a>
+			</div>
 		</c:forEach>
+		
+		<%@ include file="partials/footer.jsp" %>
+		
+		<%@ include file="partials/scripts.jsp" %>
 	</body>
 </html>

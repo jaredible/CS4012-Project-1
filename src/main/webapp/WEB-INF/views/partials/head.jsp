@@ -11,4 +11,4 @@
 <title>Reporter</title>
 
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.2/dist/semantic.min.css">
-<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/styles.css"/>">
+<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/styles.css" />">

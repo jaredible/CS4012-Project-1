@@ -4,14 +4,14 @@ public enum AssignmentType {
 
 	HOMEWORK("homework"), TEST("tests"), QUIZ("quizzes");
 
-	private String folder;
+	private String directory;
 
-	private AssignmentType(String folder) {
-		this.folder = folder;
+	private AssignmentType(String directory) {
+		this.directory = directory;
 	}
 
-	public String getFolder() {
-		return folder;
+	public String getDirectory() {
+		return directory;
 	}
 
 }

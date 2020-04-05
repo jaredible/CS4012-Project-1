@@ -16,6 +16,11 @@ public class PropertiesUtils {
 		try (InputStream input = file.getInputStream()) {
 			Properties prop = new Properties();
 			prop.load(input);
+
+			if (!prop.containsKey("filename")) {
+				prop.put("filename", file.getOriginalFilename().split("\\.")[0]);
+			}
+
 			result = prop;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -35,12 +40,6 @@ public class PropertiesUtils {
 		}
 
 		return result.toArray(new Properties[result.size()]);
-	}
-
-	public static String remove(Properties properties, String key) {
-		String value = properties.getProperty(key);
-		properties.remove(key);
-		return value;
 	}
 
 	public static void print(Properties properties) {

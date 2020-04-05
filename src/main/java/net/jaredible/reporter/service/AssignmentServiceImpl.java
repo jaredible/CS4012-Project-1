@@ -1,9 +1,9 @@
 package net.jaredible.reporter.service;
 
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -54,6 +54,7 @@ public class AssignmentServiceImpl implements AssignmentService {
 		String title = properties.getProperty("title");
 		String author = properties.getProperty("author");
 		String dueDate = properties.getProperty("due");
+		String filename = properties.getProperty("filename");
 		Map<Integer, Question> questions = new HashMap<Integer, Question>();
 
 		for (Entry<Object, Object> prop : properties.entrySet()) {
@@ -73,11 +74,15 @@ public class AssignmentServiceImpl implements AssignmentService {
 			}
 		}
 
-		Assignment assignment = new Assignment(null, title, author, Timestamp.valueOf(dueDate), new HashSet<Question>(questions.values()));
+		Assignment assignment = new Assignment(null, title, author, Timestamp.valueOf(dueDate));
 		assignmentDAO.saveAssignment(assignment);
 
-		String link = PDUtils.generate(path, AssignmentType.valueOf(type), assignment, questions);
-		return link;
+		try {
+			return PDUtils.generate(path, AssignmentType.valueOf(type).getDirectory(), filename, assignment, questions);
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	@Override

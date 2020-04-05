@@ -2,7 +2,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div class="ui text menu">
-	<div class="item">
-		<img src="<c:url value="/resources/img/logo.jpg" />">
-	</div>
 </div>

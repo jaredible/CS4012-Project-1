@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -12,92 +13,107 @@ import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.springframework.beans.factory.annotation.Value;
 
 import net.jaredible.reporter.model.Assignment;
-import net.jaredible.reporter.model.AssignmentType;
 import net.jaredible.reporter.model.Question;
 
 public class PDUtils {
 
-	public static String generate(String path, AssignmentType type, Assignment assignment, Map<Integer, Question> questions) {
-		String result = null;
+	@Value("${test}")
+	private static String test;
 
+	public static String generate(String path, String directory, String filename, Assignment assignment, Map<Integer, Question> questions) throws IOException {
+		String result = null;
+		
+		System.out.println(test);
+
+		PDDocument document = null;
 		try {
-			result = test(new File(path, type.getFolder()).getPath());
-		} catch (IOException e) {
-			e.printStackTrace();
+			document = new PDDocument();
+			PDPage page = new PDPage();
+
+			document.addPage(page);
+
+			PDPageContentStream stream = new PDPageContentStream(document, page);
+			PDFont font = PDType1Font.HELVETICA;
+			float fontSize = 12;
+			float leading = 1.5f * fontSize;
+
+			PDRectangle box = page.getMediaBox();
+			float margin = 72;
+			float width = box.getWidth() - 2 * margin;
+			float startX = box.getLowerLeftX() + margin;
+			float startY = box.getUpperRightY() - margin;
+
+			stream.beginText();
+			stream.setFont(font, fontSize);
+			stream.newLineAtOffset(startX, startY);
+
+			stream.showText(assignment.getTitle());
+			stream.newLineAtOffset(0, -leading);
+			stream.showText("Due: " + DateUtils.prettify(assignment.getDueDate()));
+			stream.newLineAtOffset(0, -leading);
+
+			stream.newLineAtOffset(0, -leading);
+
+			for (Entry<Integer, Question> question : questions.entrySet()) {
+				String text = question.getKey() + ". " + question.getValue().getContent();
+				List<String> lines = getLines(text, font, width, fontSize);
+				for (String line : lines) {
+					stream.showText(line);
+					stream.newLineAtOffset(0, -leading);
+				}
+				stream.newLineAtOffset(0, -leading);
+			}
+
+			stream.endText();
+			stream.close();
+
+			File file = new File(path, filename + ".pdf");
+			document.save(file);
+			result = "/assignments/" + directory + "/" + filename + ".pdf";
+		} finally {
+			if (document != null) {
+				document.close();
+			}
 		}
 
 		return result;
 	}
 
-	public static String test(String path) throws IOException {
-		String result = null;
+	private static List<String> getLines(String text, PDFont font, float width, float fontSize) throws IOException {
+		List<String> lines = new ArrayList<String>();
 
-		PDDocument doc = null;
-		try {
-			doc = new PDDocument();
-			PDPage page = new PDPage();
-			doc.addPage(page);
-			PDPageContentStream contentStream = new PDPageContentStream(doc, page);
+		int lastSpace = -1;
+		while (text.length() > 0) {
+			int spaceIndex = text.indexOf(' ', lastSpace + 1);
 
-			PDFont pdfFont = PDType1Font.HELVETICA;
-			float fontSize = 25;
-			float leading = 1.5f * fontSize;
+			if (spaceIndex < 0) {
+				spaceIndex = text.length();
+			}
 
-			PDRectangle mediabox = page.getMediaBox();
-			float margin = 72;
-			float width = mediabox.getWidth() - 2 * margin;
-			float startX = mediabox.getLowerLeftX() + margin;
-			float startY = mediabox.getUpperRightY() - margin;
+			String subString = text.substring(0, spaceIndex);
+			float size = fontSize * font.getStringWidth(subString) / 1000;
 
-			String text = "I am trying to create a PDF file with a lot of text contents in the document. I am using PDFBox";
-			List<String> lines = new ArrayList<String>();
-			int lastSpace = -1;
-			while (text.length() > 0) {
-				int spaceIndex = text.indexOf(' ', lastSpace + 1);
-				if (spaceIndex < 0)
-					spaceIndex = text.length();
-				String subString = text.substring(0, spaceIndex);
-				float size = fontSize * pdfFont.getStringWidth(subString) / 1000;
-				System.out.printf("'%s' - %f of %f\n", subString, size, width);
-				if (size > width) {
-					if (lastSpace < 0)
-						lastSpace = spaceIndex;
-					subString = text.substring(0, lastSpace);
-					lines.add(subString);
-					text = text.substring(lastSpace).trim();
-					System.out.printf("'%s' is line\n", subString);
-					lastSpace = -1;
-				} else if (spaceIndex == text.length()) {
-					lines.add(text);
-					System.out.printf("'%s' is line\n", text);
-					text = "";
-				} else {
+			if (size > width) {
+				if (lastSpace < 0) {
 					lastSpace = spaceIndex;
 				}
-			}
 
-			contentStream.beginText();
-			contentStream.setFont(pdfFont, fontSize);
-			contentStream.newLineAtOffset(startX, startY);
-			for (String line : lines) {
-				contentStream.showText(line);
-				contentStream.newLineAtOffset(0, -leading);
-			}
-			contentStream.endText();
-			contentStream.close();
-
-			File f = new File(path, "test.pdf");
-			doc.save(f);
-			result = f.getPath();
-		} finally {
-			if (doc != null) {
-				doc.close();
+				subString = text.substring(0, lastSpace);
+				lines.add(subString);
+				text = text.substring(lastSpace).trim();
+				lastSpace = -1;
+			} else if (spaceIndex == text.length()) {
+				lines.add(text);
+				text = "";
+			} else {
+				lastSpace = spaceIndex;
 			}
 		}
 
-		return result;
+		return lines;
 	}
 
 }
