@@ -47,12 +47,20 @@ You will need to clone this repository, build it with Maven, and deploy it to a 
 
 ## Use Case
 
+This is just an example use case. I have only prepared 3 test files to show how this application works.
+
+Beginning on the home page, you will have no questions. This is because no questions have been uploaded into the database yet, so let's do that.
 <p align="center">
   <a href="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image1.PNG">
     <img src="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image1.PNG" alt="Reporter">
   </a>
 </p>
 
+Upload the 3 test files, that I have provided, in this order:
+1. `cs4012homework1.properties`
+2. `cs4012quiz1.properties`
+3. `cs4012test1.properties`
+The only reason for the order is because `cs4012test1.properties` contains information that references the other 2 properties files. This way there are no errors, because we are assuming that the user knows what they are doing.
 <p align="center">
   <a href="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image2.PNG">
     <img src="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image2.PNG" alt="Reporter">
