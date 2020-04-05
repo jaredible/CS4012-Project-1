@@ -23,16 +23,12 @@
   </a>
 </p>
 
-There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need.
-
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should element DRY principles to the rest of your life :smile:
-
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue.
-
-A list of commonly used resources that I find helpful are listed in the acknowledgements.
+There were many struggles throughout this project such as: Maven setup, Spring setup, Hibernate setup, [SoC](https://en.wikipedia.org/wiki/Separation_of_concerns), and Java Reflection, however, I think that this project could be expanded. I would like to enhance this application sometime so that it:
+* Validates input
+* Checks for errors
+* Provides a better user interface
+* Allows users to have accounts so that they may keep track of their own assignments
+* Does not allow duplicate questions and assignments to be saved into the database
 
 ### Built With
 * [Maven](https://maven.apache.org/)
