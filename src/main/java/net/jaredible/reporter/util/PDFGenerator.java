@@ -64,7 +64,7 @@ public class PDFGenerator {
 			stream.endText();
 			stream.close();
 
-			File file = new File(path, filename + ".pdf");
+			File file = new File(path + "/" + directory, filename + ".pdf");
 			document.save(file);
 			result = "/assignments/" + directory + "/" + filename + ".pdf";
 		} finally {

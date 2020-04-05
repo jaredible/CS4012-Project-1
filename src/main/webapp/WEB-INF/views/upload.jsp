@@ -10,10 +10,18 @@
 		<%@ include file="partials/header.jsp" %>
 		
 		<div class="ui container">
-			<form class="ui form" action="" method="POST" enctype="multipart/form-data">
-				<input class="ui input" type="file" name="files" multiple>
-				<button class="ui button" type="submit">Upload</button>
-			</form>
+			<div class="ui center aligned basic segment">
+				<form class="ui form" action="" method="POST" enctype="multipart/form-data">
+					<div class="ui input">
+						<input type="file" name="files" multiple>
+					</div>
+					<button class="ui button" type="submit">Upload</button>
+				</form>
+			</div>
+			
+			<div class="ui center aligned basic segment">
+				<h3 class="ui header">Questions</h3>
+			</div>
 			
 			<table class="ui celled padded table">
 				<thead>
