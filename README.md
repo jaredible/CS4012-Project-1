@@ -19,7 +19,7 @@
 
 <p align="center">
   <a href="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image0.PNG">
-    <img src="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image0.PNG" alt="Reporter" width="80" height="80">
+    <img src="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image0.PNG" alt="Reporter">
   </a>
 </p>
 
