@@ -1,0 +1,7 @@
+type=HOMEWORK
+title=CS 4012 Homework 1
+author=John Doe
+due=2020-02-25 23:59:59
+1=In the Spring web MVC framework, which of the following components is used to connect various resources for implementing a feature?
+2=When we develop a Spring web MVC application, we usually use more than one front controllers in it.
+3=Can we develop a Java web application in which for some of the features we use Spring web MVC to implement and for some other features we use Java servlets and JSPs to implement?

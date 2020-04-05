@@ -1,0 +1,9 @@
+type=QUIZ
+title=CS 4012 Quiz 1
+author=John Doe
+due=2020-01-30 23:59:59
+1=Which of the following relationships between a business service class and its dependency object is more friendly for the reusability of the business service class?
+2=In Java web development, decentralization regarding the dependency objects is always a better way than the centralization way.
+3=In the Spring context, which of the following gives the meaning of a bean?
+4=Which of the following Java types is NOT a Java Collection type?
+5=Which of the following dependency injection methods is more popular?

@@ -1,0 +1,10 @@
+type=TEST
+title=CS 4012 Test 1
+author=John Doe
+due=2020-02-27 23:59:59
+1=1
+2=3
+3=4
+4=Any Java class must have a public constructor. Otherwise, no object of this class can be constructed.
+5=In a Spring MVC web application, is it possible to use more than one view resolver?
+6=8
