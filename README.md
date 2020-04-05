@@ -27,7 +27,7 @@ There were many struggles throughout this project such as: Maven setup, Spring s
 * Validates input
 * Checks for errors
 * Provides a better user interface
-* Users can have accounts so that they may keep track of their own assignments
+* Allows users to have accounts so that they may keep track of their own assignments
 * Does not allow duplicate questions and assignments to be saved into the database
 
 ### Built With
