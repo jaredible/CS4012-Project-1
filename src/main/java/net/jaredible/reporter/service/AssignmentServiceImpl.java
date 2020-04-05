@@ -1,6 +1,6 @@
 package net.jaredible.reporter.service;
 
-import java.io.IOException;
+import java.lang.reflect.Method;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,13 +11,13 @@ import java.util.Properties;
 
 import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import net.jaredible.reporter.dao.AssignmentDAO;
 import net.jaredible.reporter.model.Assignment;
 import net.jaredible.reporter.model.AssignmentType;
 import net.jaredible.reporter.model.Question;
-import net.jaredible.reporter.util.PDUtils;
 
 @Service
 public class AssignmentServiceImpl implements AssignmentService {
@@ -27,6 +27,12 @@ public class AssignmentServiceImpl implements AssignmentService {
 
 	@Autowired
 	private QuestionService questionService;
+
+	@Value("${generatorClass}")
+	private String generatorClass;
+
+	@Value("${generatorMethod}")
+	private String generatorMethod;
 
 	@Override
 	public List<Assignment> getAssignments() {
@@ -49,6 +55,7 @@ public class AssignmentServiceImpl implements AssignmentService {
 	}
 
 	@Override
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public String process(Properties properties, String path) {
 		String type = properties.getProperty("type");
 		String title = properties.getProperty("title");
@@ -78,8 +85,14 @@ public class AssignmentServiceImpl implements AssignmentService {
 		assignmentDAO.saveAssignment(assignment);
 
 		try {
-			return PDUtils.generate(path, AssignmentType.valueOf(type).getDirectory(), filename, assignment, questions);
-		} catch (IOException e) {
+			Class cls = Class.forName(generatorClass);
+			Object obj = cls.getDeclaredConstructor().newInstance();
+
+			Method method = cls.getMethod(generatorMethod, String.class, String.class, String.class, Assignment.class, Map.class);
+			String link = (String) method.invoke(obj, path, AssignmentType.valueOf(type).getDirectory(), filename, assignment, questions);
+
+			return link;
+		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}

@@ -13,20 +13,14 @@ import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
-import org.springframework.beans.factory.annotation.Value;
 
 import net.jaredible.reporter.model.Assignment;
 import net.jaredible.reporter.model.Question;
 
-public class PDUtils {
+public class PDFGenerator {
 
-	@Value("${test}")
-	private static String test;
-
-	public static String generate(String path, String directory, String filename, Assignment assignment, Map<Integer, Question> questions) throws IOException {
+	public String generate(String path, String directory, String filename, Assignment assignment, Map<Integer, Question> questions) throws IOException {
 		String result = null;
-		
-		System.out.println(test);
 
 		PDDocument document = null;
 		try {
