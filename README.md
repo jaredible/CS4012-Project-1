@@ -23,7 +23,7 @@
   </a>
 </p>
 
-There were many struggles throughout this project such as: Maven setup, Spring setup, [SoC](https://en.wikipedia.org/wiki/Separation_of_concerns), and Java Reflection, however, I think that this project could be expanded. I would like to enhance this application so that it:
+There were many struggles throughout this project such as: Maven setup, Spring setup, Hibernate setup, [SoC](https://en.wikipedia.org/wiki/Separation_of_concerns), and Java Reflection, however, I think that this project could be expanded. I would like to enhance this application so that it:
 * Provides a better user interface
 * Users can have accounts to that they may keep track of their own assignments
 * Does not allow duplicate questions and assignments to be saved into the database
