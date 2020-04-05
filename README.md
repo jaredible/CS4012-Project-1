@@ -33,17 +33,16 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 ### Built With
 This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 * [Maven](https://maven.apache.org/)
+* [Tomcat](http://tomcat.apache.org/)
 * [Spring](https://spring.io/)
 * [Hibernate](https://hibernate.org/)
 * [PdfBox](https://pdfbox.apache.org/)
 
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+You will need to clone this repository and build it with Maven.
 
 ## Use Case
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+I have prepared an example use case.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
