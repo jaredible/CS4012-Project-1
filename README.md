@@ -23,7 +23,7 @@
   </a>
 </p>
 
-There were many struggles throughout this project such as: Maven setup, Spring setup, Hibernate setup, [SoC](https://en.wikipedia.org/wiki/Separation_of_concerns), and Java Reflection, however, I think that this project could be expanded. I would like to enhance this application sometime so that it:
+There were many struggles throughout this project, such as Maven setup, Spring setup, Hibernate setup, [SoC](https://en.wikipedia.org/wiki/Separation_of_concerns), and Java Reflection. However, I could expand this project sometime. I want to enhance this application so that it:
 * Validates input
 * Checks for errors
 * Provides a better user interface
