@@ -68,39 +68,42 @@ The only reason for the order is because `cs4012test1.properties` contains infor
   </a>
 </p>
 
-Your screen will look like this.
+Your screen will look like this. Click the upload button.
 <p align="center">
   <a href="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image3.PNG">
     <img src="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image3.PNG" alt="Reporter">
   </a>
 </p>
 
-Click the upload button.
+This page will provide 3 links that you can click to take you to the generated PDFs.
 <p align="center">
   <a href="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image4.PNG">
     <img src="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image4.PNG" alt="Reporter">
   </a>
 </p>
 
-This page will provide 3 links that you can click to take you to the generated PDFs.
+The generated homework PDF from `cs4012homework1.properties`.
 <p align="center">
   <a href="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image5.PNG">
     <img src="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image5.PNG" alt="Reporter">
   </a>
 </p>
 
+The generated quiz PDF from `cs4012quiz1.properties`.
 <p align="center">
   <a href="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image6.PNG">
     <img src="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image6.PNG" alt="Reporter">
   </a>
 </p>
 
+The generated test PDF from `cs4012test1.properties`.
 <p align="center">
   <a href="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image7.PNG">
     <img src="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image7.PNG" alt="Reporter">
   </a>
 </p>
 
+The home page will now have questions since you uploaded the 3 properties files into the database.
 <p align="center">
   <a href="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image8.PNG">
     <img src="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image8.PNG" alt="Reporter">
