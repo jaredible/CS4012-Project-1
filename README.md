@@ -17,7 +17,11 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<p align="center">
+  <a href="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image0.PNG">
+    <img src="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image0.PNG" alt="Reporter">
+  </a>
+</p>
 
 There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need.
 
@@ -31,7 +35,6 @@ Of course, no one template will serve all projects since your needs may be diffe
 A list of commonly used resources that I find helpful are listed in the acknowledgements.
 
 ### Built With
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 * [Maven](https://maven.apache.org/)
 * [Tomcat](http://tomcat.apache.org/)
 * [Spring](https://spring.io/)
@@ -40,9 +43,69 @@ This section should list any major frameworks that you built your project using.
 
 ## Getting Started
 
-You will need to clone this repository and build it with Maven.
+You will need to clone this repository, build it with Maven, and deploy it to a Tomcat server.
 
 ## Use Case
 
-I have prepared an example use case.
+This is just an example use case. I have only prepared 3 test files to show how this application works.
 
+Beginning on the home page, you will have no questions. This is because no questions have been uploaded into the database yet, so let's do that.
+<p align="center">
+  <a href="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image1.PNG">
+    <img src="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image1.PNG" alt="Reporter">
+  </a>
+</p>
+
+Upload the 3 test files, that I have provided, in this order:
+1. `cs4012homework1.properties`
+2. `cs4012quiz1.properties`
+3. `cs4012test1.properties`
+
+The only reason for the order is because `cs4012test1.properties` contains information that references the other 2 properties files. This way, there are no errors, because we are assuming that the user knows what they are doing.
+<p align="center">
+  <a href="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image2.PNG">
+    <img src="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image2.PNG" alt="Reporter">
+  </a>
+</p>
+
+Click the upload button.
+<p align="center">
+  <a href="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image3.PNG">
+    <img src="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image3.PNG" alt="Reporter">
+  </a>
+</p>
+
+This page will provide 3 links that you can click to take you to the generated PDFs.
+<p align="center">
+  <a href="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image4.PNG">
+    <img src="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image4.PNG" alt="Reporter">
+  </a>
+</p>
+
+The generated homework PDF from `cs4012homework1.properties`.
+<p align="center">
+  <a href="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image5.PNG">
+    <img src="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image5.PNG" alt="Reporter">
+  </a>
+</p>
+
+The generated quiz PDF from `cs4012quiz1.properties`.
+<p align="center">
+  <a href="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image6.PNG">
+    <img src="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image6.PNG" alt="Reporter">
+  </a>
+</p>
+
+The generated test PDF from `cs4012test1.properties`.
+<p align="center">
+  <a href="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image7.PNG">
+    <img src="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image7.PNG" alt="Reporter">
+  </a>
+</p>
+
+The home page will now have questions since you uploaded the 3 properties files into the database.
+<p align="center">
+  <a href="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image8.PNG">
+    <img src="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image8.PNG" alt="Reporter">
+  </a>
+</p>
