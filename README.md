@@ -68,7 +68,7 @@ The only reason for the order is because `cs4012test1.properties` contains infor
   </a>
 </p>
 
-Your screen will look like this. Click the upload button.
+Click the upload button.
 <p align="center">
   <a href="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image3.PNG">
     <img src="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image3.PNG" alt="Reporter">
