@@ -35,7 +35,6 @@ Of course, no one template will serve all projects since your needs may be diffe
 A list of commonly used resources that I find helpful are listed in the acknowledgements.
 
 ### Built With
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 * [Maven](https://maven.apache.org/)
 * [Tomcat](http://tomcat.apache.org/)
 * [Spring](https://spring.io/)
@@ -44,9 +43,54 @@ This section should list any major frameworks that you built your project using.
 
 ## Getting Started
 
-You will need to clone this repository and build it with Maven.
+You will need to clone this repository, build it with Maven, and deploy it to a Tomcat server.
 
 ## Use Case
 
-I have prepared an example use case.
+<p align="center">
+  <a href="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image1.PNG">
+    <img src="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image1.PNG" alt="Reporter">
+  </a>
+</p>
 
+<p align="center">
+  <a href="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image2.PNG">
+    <img src="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image2.PNG" alt="Reporter">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image3.PNG">
+    <img src="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image3.PNG" alt="Reporter">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image4.PNG">
+    <img src="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image4.PNG" alt="Reporter">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image5.PNG">
+    <img src="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image5.PNG" alt="Reporter">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image6.PNG">
+    <img src="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image6.PNG" alt="Reporter">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image7.PNG">
+    <img src="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image7.PNG" alt="Reporter">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image8.PNG">
+    <img src="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image8.PNG" alt="Reporter">
+  </a>
+</p>
