@@ -43,7 +43,7 @@ You will need to clone this repository, build it with Maven, and deploy it to a 
 
 ## Use Case
 
-This is just an example use case. I have only prepared 3 test files to show how this application works.
+This is just an example use case. I have only prepared 3 test files, which can be found in the `tests` folder, to show how this application works.
 
 Beginning on the home page, you will have no questions. This is because no questions have been uploaded into the database yet, so let's do that.
 <p align="center">
