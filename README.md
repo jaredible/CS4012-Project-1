@@ -39,7 +39,10 @@ There were many struggles throughout this project, such as Maven setup, Spring s
 
 ## Getting Started
 
-You will need to clone this repository, build it with Maven, and deploy it to a Tomcat server.
+1. Clone this repository
+2. Build with Maven
+3. Deploy to a Tomcat server
+4. Use `reporter.sql` to create the database
 
 ## Use Case
 
