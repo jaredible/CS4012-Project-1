@@ -102,7 +102,7 @@ The generated test PDF from `cs4012test1.properties`.
   </a>
 </p>
 
-The home page will now have questions since you uploaded the 3 properties files into the database.
+The home page will now have questions since you uploaded the 3 properties file's questions into the database.
 <p align="center">
   <a href="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image8.PNG">
     <img src="https://github.com/jaredible/CS4012-Project-1/blob/master/images/image8.PNG" alt="Reporter">
